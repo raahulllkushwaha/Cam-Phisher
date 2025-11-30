@@ -1,4 +1,13 @@
 # CamPhish - Advanced Camera Phishing Tool
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows%20(WSL)%20%7C%20Termux-brightgreen.svg)](https://github.com/raahulllkushwaha/Cam-Phisher)
+[![GitHub stars](https://img.shields.io/github/stars/raahulllkushwaha/Cam-Phisher?style=social)](https://github.com/raahulllkushwaha/Cam-Phisher/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/raahulllkushwaha/Cam-Phisher?style=social)](https://github.com/raahulllkushwaha/Cam-Phisher/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/raahulllkushwaha/Cam-Phisher)](https://github.com/raahulllkushwaha/Cam-Phisher/issues)
+
+---
+
 **Developer: Rahul Kushwaha**
 
 ![CamPhish](https://techchip.net/wp-content/uploads/2020/04/camphish.jpg)
@@ -122,6 +131,26 @@ If you find this tool useful for your security research, please consider:
 
 ---
 
+## 👨‍💻 Author
+
+<table>
+  <tr>
+    <td align="center">
+      <b>Rahul Kushwaha</b><br>
+      <a href="https://github.com/raahulllkushwaha">
+        <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+      </a>
+    </td>
+  </tr>
+</table>
+
 **Made with ❤️ by Rahul Kushwaha for Cybersecurity Education**
 
 **Remember: With great power comes great responsibility. Use wisely!** 🔐
+
+---
+
+<p align="center">
+  Copyright (C) 2024-2025 Rahul Kushwaha<br>
+  Licensed under GNU General Public License v3.0
+</p>
