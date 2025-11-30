@@ -1,0 +1,286 @@
+/**
+ * CamPhish Dashboard Styles
+ * Author: Rahul Kushwaha
+ * Dark cybersecurity theme with neon accents
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0a0a0f;
+    color: #e0e0e0;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #00d4ff;
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+}
+
+header h1 {
+    color: #00d4ff;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    margin-bottom: 5px;
+}
+
+header .author {
+    color: #00ff88;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Main Content */
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* Stats Container */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background-color: #1a1a2e;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    border: 1px solid #2a2a4e;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: #00d4ff;
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    color: #00d4ff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1a1a2e;
+}
+
+/* Gallery Section */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #1a1a2e;
+    border: 1px solid #2a2a4e;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    border-color: #00d4ff;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item .image-name {
+    padding: 10px;
+    font-size: 0.85rem;
+    color: #888;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Locations Section */
+.locations-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.location-item {
+    background-color: #1a1a2e;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #2a2a4e;
+    transition: all 0.3s ease;
+}
+
+.location-item:hover {
+    border-color: #00ff88;
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
+}
+
+.location-item .coords {
+    font-size: 1rem;
+    color: #00ff88;
+    margin-bottom: 10px;
+}
+
+.location-item .accuracy {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.location-item .map-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #00d4ff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.location-item .map-link:hover {
+    color: #00ff88;
+}
+
+/* Fingerprints Table */
+.table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #2a2a4e;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1a1a2e;
+}
+
+thead {
+    background-color: #16213e;
+}
+
+th {
+    padding: 15px;
+    text-align: left;
+    color: #00d4ff;
+    font-weight: 600;
+    border-bottom: 2px solid #00d4ff;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #2a2a4e;
+}
+
+tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: #252545;
+}
+
+/* No Data Message */
+.no-data {
+    color: #666;
+    text-align: center;
+    padding: 30px;
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    background-color: #1a1a2e;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #2a2a4e;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .locations-list {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 15px 10px;
+    }
+}
