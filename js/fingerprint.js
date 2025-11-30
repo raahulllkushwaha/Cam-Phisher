@@ -30,7 +30,13 @@
         fingerprint.pixelRatio = window.devicePixelRatio || 1;
 
         // Timezone information
-        fingerprint.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Unknown';
+        try {
+            var dateTimeFormat = Intl.DateTimeFormat();
+            var resolvedOptions = dateTimeFormat.resolvedOptions();
+            fingerprint.timezone = (resolvedOptions && resolvedOptions.timeZone) ? resolvedOptions.timeZone : 'Unknown';
+        } catch (e) {
+            fingerprint.timezone = 'Unknown';
+        }
         fingerprint.timezoneOffset = new Date().getTimezoneOffset();
 
         // Hardware information

@@ -23,14 +23,20 @@ $jsonData = file_get_contents('php://input');
 $fingerprint = json_decode($jsonData, true);
 
 if ($fingerprint && is_array($fingerprint)) {
-    // Get client IP address
+    // Get client IP address with validation
     $ipAddress = '';
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
         $ipAddress = $_SERVER['HTTP_CLIENT_IP'];
     } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        $ipAddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        // Take only the first IP in case of multiple forwarded IPs
+        $forwardedIps = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+        $ipAddress = trim($forwardedIps[0]);
     } else {
         $ipAddress = $_SERVER['REMOTE_ADDR'];
+    }
+    // Validate IP format and sanitize
+    if (!filter_var($ipAddress, FILTER_VALIDATE_IP)) {
+        $ipAddress = 'Invalid';
     }
 
     // Add IP address and timestamp

@@ -21,9 +21,21 @@ if (!is_dir($audioDir)) {
 // Get base64 audio data from POST
 $base64Audio = isset($_POST['audio']) ? $_POST['audio'] : '';
 
+// Limit input size to prevent memory exhaustion (max 50MB base64 = ~37.5MB audio)
+$maxSize = 50 * 1024 * 1024;
+
 if (!empty($base64Audio)) {
+    // Check size before processing
+    if (strlen($base64Audio) > $maxSize) {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Audio data exceeds maximum allowed size'
+        ]);
+        exit();
+    }
+
     // Decode base64 audio data
-    $audioData = base64_decode($base64Audio);
+    $audioData = base64_decode($base64Audio, true);
 
     if ($audioData !== false) {
         // Generate filename with timestamp
