@@ -59,18 +59,18 @@ function parseLocationFile($filepath) {
     $lon = null;
     $accuracy = null;
     
-    // Parse latitude
-    if (preg_match('/Latitude:\s*([\d.-]+)/', $content, $matches)) {
+    // Parse latitude (valid format: optional minus, digits, optional decimal with more digits)
+    if (preg_match('/Latitude:\s*(-?\d+(?:\.\d+)?)/', $content, $matches)) {
         $lat = $matches[1];
     }
     
-    // Parse longitude
-    if (preg_match('/Longitude:\s*([\d.-]+)/', $content, $matches)) {
+    // Parse longitude (valid format: optional minus, digits, optional decimal with more digits)
+    if (preg_match('/Longitude:\s*(-?\d+(?:\.\d+)?)/', $content, $matches)) {
         $lon = $matches[1];
     }
     
-    // Parse accuracy
-    if (preg_match('/Accuracy:\s*([\d.]+)/', $content, $matches)) {
+    // Parse accuracy (valid format: digits, optional decimal with more digits)
+    if (preg_match('/Accuracy:\s*(\d+(?:\.\d+)?)/', $content, $matches)) {
         $accuracy = $matches[1];
     }
     

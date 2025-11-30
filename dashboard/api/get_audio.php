@@ -37,7 +37,7 @@ if (is_array($files) && count($files) > 0) {
     
     // Sort by date descending (newest first)
     usort($audioFiles, function($a, $b) {
-        return $b['unixTimestamp'] - $a['unixTimestamp'];
+        return $b['unixTimestamp'] <=> $a['unixTimestamp'];
     });
 }
 

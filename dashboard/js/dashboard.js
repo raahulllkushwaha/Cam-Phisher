@@ -46,6 +46,10 @@ async function loadImages() {
         }
         
         gallery.innerHTML = images.map(function(image) {
+            // Validate filename format: only allow cam*.png pattern without path separators
+            if (!/^cam[a-zA-Z0-9]+\.png$/.test(image)) {
+                return '';
+            }
             return '<div class="gallery-item">' +
                 '<img src="../' + encodeURIComponent(image) + '" alt="Captured image" loading="lazy">' +
                 '<div class="image-name">' + escapeHtml(image) + '</div>' +

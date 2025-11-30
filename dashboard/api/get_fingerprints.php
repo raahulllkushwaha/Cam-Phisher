@@ -37,7 +37,7 @@ if (is_array($fingerprintFiles) && count($fingerprintFiles) > 0) {
     usort($fingerprints, function($a, $b) {
         $timeA = isset($a['unixTimestamp']) ? $a['unixTimestamp'] : 0;
         $timeB = isset($b['unixTimestamp']) ? $b['unixTimestamp'] : 0;
-        return $timeB - $timeA;
+        return $timeB <=> $timeA;
     });
 }
 
